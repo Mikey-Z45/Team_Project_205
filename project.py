@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap
 from sightengine.client import SightengineClient
 
-UPLOAD_FOLDER = 'https://github.com/Mikey-Z45/MikeDivis205/tree/master/uploads'
+UPLOAD_FOLDER = 'https://github.com/Mikey-Z45/Team_Project_205/tree/master/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
