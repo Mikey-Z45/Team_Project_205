@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Example Page{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <h1>Hello from Bootstrap!</h1>
+
+</div>
+
+<!-- checking this out as a way to upload images also -->
+<form action="/upload" method="post" enctype="multipart/form-data" >
+      <span class="btn btn-default btn-file">
+        Browse <input type="file" name="image">
+      </span>
+
+    <input type="submit" value="Upload your image" class="btn btn-primary">
+</form>
+
+<div class="text-center">
+    {% if init %}
+        {% if invalidImage %}
+            <div class="alert alert-danger" style="margin-top:18px;">
+                <strong>Error</strong> Your image contain invalid content !
+            </div>
+        {% else %}
+            <div class="alert alert-success" style="margin-top:18px;">
+                <strong>Success!</strong> Your image was upload successfully
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+<!-- this was taken from, https://developers.google.com/web/fundamentals/media/capturing-images/, not sure if it is right but ill keep working on it also -->
+
+<div id="target">You can drag an image file here</div>
+<script>
+  const target = document.getElementById('target');
+
+  target.addEventListener('drop', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    doSomethingWithFiles(e.dataTransfer.files);
+  });
+
+  target.addEventListener('dragover', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    e.dataTransfer.dropEffect = 'copy';
+  });
+</script>
+
+
+{% endblock %}
