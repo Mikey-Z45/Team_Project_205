@@ -6,7 +6,7 @@
 # Python 3.6.0
 
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox
+from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
  
@@ -26,7 +26,9 @@ class App(QMainWindow):
         self.setGeometry(self.left, self.top, self.width, self.height)
 
         # create a message box
-        self.QMessageBox.setText("Enter the URL to find faces.")
+        msg = QLabel()
+        msg.setText("Enter the URL to find faces.")
+        
         # Create textbox
         self.textbox = QLineEdit(self)
         self.textbox.move(20, 20)
@@ -44,8 +46,13 @@ class App(QMainWindow):
     @pyqtSlot()
     def on_click(self):
         textboxValue = self.textbox.text()
-        QMessageBox.question(self, 'Message - pythonspot.com', "You typed: " + textboxValue, QMessageBox.Ok, QMessageBox.Ok)
-        self.textbox.setText("")
+        # QMessageBox.question(self, 'Output Box', "You typed: " + textboxValue, QMessageBox.Ok, QMessageBox.Ok)
+        # self.textbox.setText("")
+        
+        inputURL = textboxValue
+        
+        with open("currentURL.txt", "w") as file: 
+            file.write(inputURL)          
  
  
 if __name__ == '__main__':

@@ -11,12 +11,19 @@ def make_soup(url):
     thepage = urllib.request.urlopen(url)
     soupdata = BeautifulSoup(thepage, "html.parser")
     return soupdata
+
+# read the url from the created file
+with open ("currentURL.txt", "r") as myfile:
+    ourURL = myfile.read()
+    print(ourURL)
+
+    
 i=1
-soup = make_soup("https://csumb.edu/")
+soup = make_soup(ourURL)
 for img in soup.findAll('img'):
     temp=img.get('src')
     if temp[:1]=="/":
-        image = "https://csumb.edu/" + temp
+        image = ourURL + temp
     else:
         image = temp
 
@@ -28,7 +35,7 @@ for img in soup.findAll('img'):
         filename=nametemp
 
 
-    imagefile = open(filename + ".jpg", 'wb')
+    imagefile = open("images/" + filename + ".jpg", 'wb')
     imagefile.write(urllib.request.urlopen(image).read())
     imagefile.close()
 
@@ -49,7 +56,7 @@ pic_remap = cv2.applyColorMap(gray_img, cv2.COLORMAP_WINTER)
 pic_remap1 = cv2.applyColorMap(gray_img, cv2.COLORMAP_JET)
 pic_remap2 = cv2.applyColorMap(gray_img, cv2.COLORMAP_BONE)
 while True:
-    cv2.imshow("Lab 13", img)
+    cv2.imshow("Final Project 205", img)
     key = cv2.waitKey()
     if ord('q') == key:
         break
