@@ -66,6 +66,7 @@ class Window(QWidget):
 		# import the file that'll read faces from images
 		import webscraper
 		import face_reader
+		
 		# for-loop to go through every image and display them
 		x = 1
 		for x in range(16):
