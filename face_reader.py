@@ -15,14 +15,14 @@ def make_soup(url):
 # read the url from the created file
 with open ("currentURL.txt", "r") as myfile:
     ourURL = myfile.read()
-    print(ourURL)
+    # print(ourURL)
 
     
 i=1
 soup = make_soup(ourURL)
 for img in soup.findAll('img'):
-    temp=img.get('src')
-    if temp[:1]=="/":
+    temp = img.get('src')
+    if temp[:1] == "/":
         image = ourURL + temp
     else:
         image = temp
