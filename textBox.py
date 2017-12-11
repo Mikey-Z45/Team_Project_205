@@ -9,9 +9,10 @@ import sys
 from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
- 
+
+
 class App(QMainWindow):
- 
+
     def __init__(self):
         super().__init__()
         self.title = '205 Project: URL input box'
@@ -20,7 +21,7 @@ class App(QMainWindow):
         self.width = 400
         self.height = 140
         self.initUI()
- 
+
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
@@ -28,16 +29,16 @@ class App(QMainWindow):
         # create a message box
         msg = QLabel()
         msg.setText("Enter the URL to find faces.")
-        
+
         # Create textbox
         self.textbox = QLineEdit(self)
         self.textbox.move(20, 20)
         self.textbox.resize(280,40)
- 
+
         # Create a button in the window to submit the url
         self.button = QPushButton('Submit URL', self)
         self.button.move(20,80)
- 
+
         # connect button to function on_click
         self.button.clicked.connect(self.on_click)
         self.show()
@@ -48,13 +49,14 @@ class App(QMainWindow):
         textboxValue = self.textbox.text()
         # QMessageBox.question(self, 'Output Box', "You typed: " + textboxValue, QMessageBox.Ok, QMessageBox.Ok)
         # self.textbox.setText("")
-        
+
         inputURL = textboxValue
-        
-        with open("currentURL.txt", "w") as file: 
-            file.write(inputURL)          
- 
- 
+
+        with open("currentURL.txt", "w") as file:
+            file.write(inputURL)
+
+        import face_reader
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = App()
