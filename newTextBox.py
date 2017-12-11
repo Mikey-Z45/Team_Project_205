@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QLineEdit, QVBoxLayout, QVBoxLayout, QComboBox)
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QLineEdit, QVBoxLayout, QVBoxLayout, QComboBox, QGroupBox, QScrollArea)
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
 from PIL import Image
@@ -26,14 +26,24 @@ class Window(QWidget):
 			# global layout that'll take in the new pictures
 			global layout2
 			layout2 = QVBoxLayout()
+			
+			# group box
+			global groupBox
+			groupBox = QGroupBox()
 
+			# scroller area
+			global scroller
+			scroller = QScrollArea()
+			
 			# add widgets for label and line edit
 			layout.addWidget(self.label)
 			layout.addWidget(self.textbox)
 			layout.addWidget(self.button)
-
+			
+			
+			
 			# the images are added to the original layout/GUI
-			layout.addLayout(layout2)
+			layout.addWidget(scroller)
 
 			# set the layout
 			self.setLayout(layout)
@@ -61,6 +71,9 @@ class Window(QWidget):
 			layout2.addWidget(self.picLabel)
 			x+=1
 			print(x)
+		
+		groupBox.setLayout(layout2)
+		scroller.setWidget(groupBox)
 
 
 if __name__ == '__main__':

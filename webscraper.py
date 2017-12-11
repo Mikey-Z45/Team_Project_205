@@ -25,6 +25,8 @@ with open ("currentURL.txt", "r") as myfile:
     print(ourURL)
 
 #Counter starting at 1 to rename images
+#has a counter 'i' starting at one so the first image pulled is resaved as 1.jpg
+#and continues numerically for all other images.
 i=1
 soup = make_soup(ourURL)
 for img in soup.findAll('img'):
