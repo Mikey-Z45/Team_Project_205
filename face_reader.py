@@ -30,9 +30,9 @@ for img in soup.findAll('img'):
         image = temp
 =======
 
+
 face = 1
 for file in os.listdir("images"):
-
     if file.endswith(".jpg"):
         img = cv2.imread("images/"+ file )
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -50,4 +50,4 @@ for file in os.listdir("images"):
 
         #pprint(eyes)
         cv2.imwrite('faceimages/'+ str(face)+'.jpg', img)
-        face = face+1
+        face += 1
