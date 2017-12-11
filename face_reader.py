@@ -4,6 +4,8 @@ import cv2
 from pprint import pprint
 from PIL import Image
 
+
+#defines some objects to use the xml files needed for face recognition
 casc_class = "haarcascade_frontalface_default.xml"
 eye_cascade = cv2.CascadeClassifier("haarcascade_eye.xml")
 face_cascade = cv2.CascadeClassifier(casc_class)
@@ -11,10 +13,13 @@ face_cascade = cv2.CascadeClassifier(casc_class)
 if face_cascade.empty():
     print("file didn't load")
 else:
-    print("yes!")
+    print("finding faces...")
 
 
-
+#Goes through each numerically ordered image in image/ directory and looks for faces then
+#saves them to faceimages/ directory.
+#since the image names start at 1.jpg and so forth, there is a face counter set to one that increments
+#everytime an image is done processing to keep the new images ordered numerically.
 face = 1
 for file in os.listdir("images"):
     if file.endswith(".jpg"):
