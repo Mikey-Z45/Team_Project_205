@@ -18,37 +18,14 @@ face_cascade = cv2.CascadeClassifier(casc_class)
 if face_cascade.empty():
     print("file didn't load")
 else:
-    print("yes!")
+    print("finding faces...")
 
-# read the url from the created file
-with open ("currentURL.txt", "r") as myfile:
-    ourURL = myfile.read()
-    # print(ourURL)
-
-
-i=1
-soup = make_soup(ourURL)
-for img in soup.findAll('img'):
-    temp = img.get('src')
-    if temp[:1] == "/":
-        image = ourURL + temp
-    else:
-        image = temp
-
-print("Finding Faces!")
-
-#Goes through each numerically ordered image in image/ directory and looks for faces then
-#saves them to faceimages/ directory.
-#since the image names start at 1.jpg and so forth, there is a face counter set to one that increments
-#everytime an image is done processing to keep the new images ordered numerically.
 face = 1
 for file in os.listdir("images"):
     if file.endswith(".jpg"):
         img = cv2.imread("images/"+ file )
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
->>>>>>> 80df7f4175b1464d89e4d3c5a3b82f34f597795c
-
 
         for(x,y,w,h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255) ,2)
