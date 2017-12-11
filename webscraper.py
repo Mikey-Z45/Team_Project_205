@@ -39,7 +39,7 @@ for img in soup.findAll('img'):
         filename=str(i)
         i=i+1
     else:
-        filename=nametemp
+        continue
 
 #Saves images
     imagefile = open("images/" + filename + ".jpg", 'wb')
