@@ -1,5 +1,4 @@
-#Intro
-#face_reader.py
+#webscraper.py
 #11/20/2017
 #Danial Sahuri
 #Description: Takes a website url saved in 'currentURL.txt' and parses the html for images
