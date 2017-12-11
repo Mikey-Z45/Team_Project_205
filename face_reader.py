@@ -14,11 +14,11 @@ else:
     print("yes!")
 
 
-
+face = 1
 for file in os.listdir("images"):
-    face = 15
+
     if file.endswith(".jpg"):
-        img = Image.open("images/"+ str(face)+".jpg")
+        img = cv2.imread("images/"+ file )
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
@@ -33,4 +33,4 @@ for file in os.listdir("images"):
 
         #pprint(eyes)
         cv2.imwrite('faceimages/'+ str(face)+'.jpg', img)
-        face += 1
+        face = face+1
