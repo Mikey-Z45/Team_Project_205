@@ -6,7 +6,7 @@
 # Python 3.6.0
 
 import sys
-from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
@@ -55,7 +55,6 @@ class App(QMainWindow):
         with open("currentURL.txt", "w") as file:
             file.write(inputURL)
 
-        import webscraper
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
