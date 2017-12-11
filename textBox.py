@@ -55,7 +55,7 @@ class App(QMainWindow):
         with open("currentURL.txt", "w") as file:
             file.write(inputURL)
 
-        import face_reader
+        import webscraper
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
