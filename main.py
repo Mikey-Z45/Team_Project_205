@@ -1,3 +1,8 @@
+#webscraper.py
+#11/20/2017
+#Michae Divis, Jessica Ubaldo
+#Description: GUI for the program, opens a window which lets a user input an address and press Submit.
+#then displays images after face detection in a scrollable window.
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QLineEdit, QVBoxLayout, QVBoxLayout, QComboBox, QGroupBox, QScrollArea)
 from PyQt5.QtCore import pyqtSlot
@@ -26,7 +31,7 @@ class Window(QWidget):
 			# global layout that'll take in the new pictures
 			global layout2
 			layout2 = QVBoxLayout()
-			
+
 			# group box
 			global groupBox
 			groupBox = QGroupBox()
@@ -34,14 +39,14 @@ class Window(QWidget):
 			# scroller area
 			global scroller
 			scroller = QScrollArea()
-			
+
 			# add widgets for label and line edit
 			layout.addWidget(self.label)
 			layout.addWidget(self.textbox)
 			layout.addWidget(self.button)
-			
-			
-			
+
+
+
 			# the images are added to the original layout/GUI
 			layout.addWidget(scroller)
 
@@ -70,7 +75,7 @@ class Window(QWidget):
 			layout2.addWidget(self.picLabel)
 			x+=1
 			print(x)
-		
+
 		groupBox.setLayout(layout2)
 		scroller.setWidget(groupBox)
 

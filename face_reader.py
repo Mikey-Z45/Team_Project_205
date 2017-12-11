@@ -1,3 +1,8 @@
+#webscraper.py
+#11/20/2017
+#Danial Sahuri, Jessica Ubaldo
+#Description: Takes images from images/ directory and iterates them through a face detection program and saves them
+#to a new directory faceimages/
 import os
 import numpy as np
 import cv2
